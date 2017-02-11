@@ -10,6 +10,8 @@ from .forms import InputForm
 b = ImageProcessor()
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
 def form(request):
     input_form = InputForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
