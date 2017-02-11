@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<link rel="stylesheet" href="index.css">
+
+   <nav color = "white" class="navbar navbar-fixed-top" style="background-color: #03406a ; font-family:campton_y; font-size:17px; color:white;">
+     <c href="#" class="pull-left"><img src="{% static 'img/try.png' %}" height="40" width="40" style="margin-left: 5px; margin-right: 6px; margin-top: 5px" ></c>
+     <div class="container-fluid" >
+
+       <div class="navbar-header">
+         <c class="navbar-brand" color = "white" href="#"> MoAD</c>
+       </div>
+
+       <ul class="nav navbar-nav">
+         <li style="color:white"  ><a href="/home/" style="color:white">Home</a></li>
+         <li><a href="/form/" style="color:white">Upload Image</a></li>
+       </ul>
+
+     </div>
+   </nav>
+
+   <img src="{% static 'img/header_nb.png' %}" height="70%" width="100%" style="margin-bottom: 10px;">
+   <center><h1 style="margin-top: 40px;font-family:campton; font-size: 40px">Start using this app now!</h1></center>
+<div class = "container">
+<form action = "" method = "POST" enctype = "multipart/form-data" role="form">
+   <h1>Health Hacks</h1>
+   {% csrf_token %}
+   {% bootstrap_form input_form %}
+   <div class="form-group">
+   <button type="submit" class="btn btn-primary">Submit</button>
+   </div>
+</form>
+</div>
+{% endblock %}
