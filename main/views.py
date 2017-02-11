@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
+
 def form(request):
     input_form = InputForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
@@ -28,8 +29,9 @@ def form(request):
 
 
 def home(request):
-    context={}
+    context = {}
     return render(request, "home.html", context)
+
 
 def results(request):
     filename = Input.objects.latest("image").filename()
@@ -48,7 +50,7 @@ def results(request):
         messages.success(request, "Antibiotics")
         messages.success(request, "Vitamin A")
     if c == "rashes":
-        messages.success(request, "You have" + c+ ".")
+        messages.success(request, "You have " + c+ ".")
         messages.success(request, "Medications: Use gentle soaps such as Basis, Cetaphil, Dove, or Oil of Olay\n")
     if c == "chickenpox":
         messages.success(request, "You have " + c+ ".")

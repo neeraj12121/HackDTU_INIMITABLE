@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+
+<nav color = "white" class="navbar navbar-fixed-top" style="font-family:campton_y; background-color: #03406a ;  font-size:17px;color:white">
+ <c href="#" class="pull-left"></c>
+ <div class="container-fluid" >
+   <div class="navbar-header">
+     <c class="navbar-brand" style="color:white" href="#"> INIMITABLE</c>
+   </div>
+   <ul class="nav navbar-nav" color = "white">
+     <li class="active" style="color:black"  ><a href="/home/" style="color:white" >Home</a></li>
+     <li><a href="/form/" style="color:white" >Upload Image</a></li>
+   </ul>
+ </div>
+</nav>
+
+<img src="{% static 'img/Payor-Header.jpg' %}" height="100%" width="100%" style="margin-bottom: 20px;">
+<center><h1 style="font-family:campton;font-size: 40px">What can you get from this?</h1></center>
+   <div class="wall_1">
+<center><p style="font-size:20px; font-family:campton_y">Here are the cool features you can get from this web app.</p></center>
+   </div>
+
+<div class="row" style="margin-right:0">
+ <div class="col-sm-4 text-center" style="font-family: campton; font-size:25px;">
+   <div>
+     <img src="{% static 'img/diag.png' %}" alt="" style="margin-bottom: 10px; " height="200" width="200">
+   </div>
+   Diagnosis
+   <h3 style="font-family:campton_y; font-size:18px; text-align: justify; margin-left: 25px;" >You will be able to see what is the possible disease you have. Take note that this may not be very accurate. Trust at your own risk. </h3>
+ </div>
+
+ <div class="col-sm-4 text-center" style="font-family: campton; font-size:25px;">
+       <div>
+     <img src="{% static 'img/med.png' %}" alt="" style="margin-bottom: 10px;" height="200" width="200">
+   </div>
+   Medication
+       <h3 style="font-family: campton_y; font-size:18px; text-align: justify; margin-left: 25px;" > You will be given suggestions of what medications you can take. This can serve as your first aid but may not apply for long periods of time. You may want to ask the opinion of an expert first before using it. </h3>
+ </div>
+
+ <div class="col-sm-4 text-center" style="font-family: campton; font-size:25px;">
+   <div>
+     <img src="{% static 'img/spec.png' %}" alt="" style="margin-bottom: 10px;" height="200" width="200">
+   </div>
+   Specialists
+       <h3 style="font-family: campton_y; font-size:18px; text-align: justify; margin-bottom: 60px;margin-right:0" > You will be given a list of doctors near your area who can help you. These are the people who specialize in treating the disease that you were diagnosed with.</h3>
+ </div>
+</div>
+{% endblock %}

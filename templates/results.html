@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block google_script %}
+<script>
+
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 6,
+    center: {lat: 14.5833, lng: 121.0000}
+  });
+
+  {% for doctor in doctor_list%}
+  var contentString{{doctor.id}} = "<p>physician's name: {{doctor.full_name}}</p>" + "<p>physician's contact number: {{doctor.contact_number}} </p> " + "<p>physician's specialty: {{doctor.tags}}</p>";
+
+  var infowindow{{doctor.id}} = new google.maps.InfoWindow({
+    content: contentString{{doctor.id}}
+  });
+  var marker{{doctor.id}} = new google.maps.Marker({
+    position: {lat: {{ doctor.latfield }}, lng: {{doctor.longfield}}},
+    map: map,
+  });
+  marker{{doctor.id}}.addListener('click', function() {
+    infowindow{{doctor.id}}.open(map, marker{{doctor.id}});
+  });
+  {% endfor %}
+
+}
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4SY-l1j6x6jHQgVHLOPPb_KGppsrzSMA&signed_in=true&callback=initMap" async defer>
+  </script>
+{% endblock %}
+
+
+{% block content%}
+<nav class="navbar navbar-fixed-top" style="font-family:campton_y; background-color: #03406a ;  font-size:17px;color:white">
+ <c href="#" class="pull-left"></c>
+ <div class="container-fluid" >
+   <div class="navbar-header">
+     <c class="navbar-brand" style="color:white" href="#"> INIMITABLE</c>
+   </div>
+   <ul class="nav navbar-nav">
+     <li class="active" style="color:white"  ><a href="/home/" style="color:white">Home</a></li>
+     <li><a href="/form/" style="color:white" >Upload Image</a></li>
+   </ul>
+ </div>
+</nav>
+<p>
+  You have {{ disease }}
+</p>
+
+<center><h1 style="font-family:campton; font-size:40px; margin-top:50px">Results</h1></center>
+{% if messages %}
+<div class="messages" style="font-family:campton_y">
+    {% for message in messages %}
+    <center><h3>{{ message }}</h3></center>
+    {% endfor %}
+</div>
+
+<center><h1 style="font-family:campton; font-size:40px; margin-top:50px; margin-bottom:20px">Location of Specialists</h1></center>
+{% endif %}
+
+ <div id="map"></div>
+
+{% endblock %}
