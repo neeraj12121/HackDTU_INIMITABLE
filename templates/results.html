@@ -7,10 +7,11 @@
 <script>
 
 
+
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('googlemap'), {
     zoom: 6,
-    center: {lat: 14.5833, lng: 121.0000}
+    center: {lat: 23.24, lng: 77.40}
   });
 
   {% for doctor in doctor_list%}
@@ -30,7 +31,9 @@ function initMap() {
 
 }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4SY-l1j6x6jHQgVHLOPPb_KGppsrzSMA&signed_in=true&callback=initMap" async defer>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIKB7CE5ejtsoRX7XQe3gSaqanfaNXY68&callback=initMap"
+  type="text/javascript"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIKB7CE5ejtsoRX7XQe3gSaqanfaNXY68&signed_in=true&callback=initMap" async defer>
   </script>
 {% endblock %}
 
@@ -63,6 +66,6 @@ function initMap() {
 <center><h1 style="font-family:campton; font-size:40px; margin-top:50px; margin-bottom:20px">Location of Specialists</h1></center>
 {% endif %}
 
- <div id="map"></div>
+     <div id="xmap" style="width:100%;height:400px;"></div>
 
 {% endblock %}

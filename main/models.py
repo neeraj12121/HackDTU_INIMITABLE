@@ -1,5 +1,6 @@
 from PIL import Image
 from sklearn import cross_validation
+from sklearn import metrics
 from sklearn import grid_search
 from sklearn import svm
 from io import BytesIO
@@ -111,8 +112,16 @@ class ImageProcessor(models.Model):
         # search for the best classifier within the search space and return it
         clf = grid_search.GridSearchCV(svm.SVC(), parameters).fit(x_train, y_train)
         classifier = clf.best_estimator_
+        if print_metrics:
+            print()
+            print('Parameters:', clf.best_params_)
+            print()
+            print('Best classifier score')
+            print(metrics.classification_report(y_test,
+            classifier.predict(x_test)))
 
         return classifier
+
 
     def __init__(self):
         self.training_paths = ["measles", "pimples", "chickenpox", "rashes", "warts"]
